@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -8,8 +9,9 @@ module.exports = {
     main: path.join(__dirname, 'src', './index.js')
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    path: __dirname + "/dist",
+    filename: "[name].js",
     clean: true,
   },
   devServer: {
@@ -21,6 +23,14 @@ module.exports = {
       template: path.join(__dirname, './src/index.html'),
       filename: 'index.html'
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './src/assets/'),
+          to: path.resolve(__dirname, 'dist/assets/')
+        }
+      ]
+    })
   ],
   module: {
     rules: [
@@ -30,7 +40,12 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 50000,
+          }
+        }
       },
     ],
   },
