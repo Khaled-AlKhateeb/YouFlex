@@ -1,12 +1,114 @@
 html {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  background: #303030;
+}
+
+.flex {
+  display: flex;
+}
+
+.header {
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1em;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list > li {
+  padding: 20px;
+}
+
+.nav-list > li > a {
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: 600;
+  color: #fff;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.nav-list > li > a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main-sector {
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.movie-details {
+  width: 25%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mov-details {
+  align-items: center;
+  gap: 10px;
+}
+
+.movie-img{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.movie-name {
+  font-size: 1em;
+  color: #fff;
+}
+
 .like-btn {
-  width: 2rem;
+  width: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+.like-btn:hover {
+  scale: 1.1;
+}
+
+.likes-div {
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 5px;
+}
+
+.number-likes {
+  text-align: right;
+  margin: 0 0;
+  color: #fff;
+}
+
+.comments-btn {
+  /* padding: 10px;
+  font-size: 1em;
+  box-shadow: 1px 1px 1px 1px rgb(51, 51, 51);
+  border-radius: 5px; */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.comments-btn:hover {
+  background: rgb(255, 205, 205);
+  color: #303030;
+  border-radius: 5px;
 }
 
 .comment-popup {
@@ -35,7 +137,7 @@ html {
 }
 
 .movie-title {
- font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .details {
@@ -46,7 +148,6 @@ html {
 }
 
 .comments-display {
-
 }
 
 .comments-list {
