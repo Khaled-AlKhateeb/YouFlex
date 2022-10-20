@@ -1,5 +1,6 @@
 import addLikes from './addLikes.js';
 import retrieveLikes from './retrieveLikes.js';
+import { display } from './display-popup.js';
 
 const main = document.querySelector('.main');
 const navNumbers = document.querySelector('.numbers');
@@ -54,11 +55,9 @@ const displayShows = (shows) => {
       movieDetails.appendChild(commentBtn);
       commentBtn.appendChild(commentBtnTxt);
 
-      const ReservationsBtn = document.createElement('button');
-      commentBtn.classList.add('reservations-btn');
-      const reservationBtnTxt = document.createTextNode('Reservations');
-      movieDetails.appendChild(ReservationsBtn);
-      ReservationsBtn.appendChild(reservationBtnTxt);
+      commentBtn.addEventListener('click', (e) => {
+        display(e);
+      });
 
       likeBtn.addEventListener('click', () => {
         numberLikes.innerHTML = '';
