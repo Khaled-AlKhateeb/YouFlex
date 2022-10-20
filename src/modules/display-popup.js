@@ -49,7 +49,7 @@ export const commentsContent = (comment) => {
 export const display = (e) => {
   commentPopup.style.display = 'flex';
   main.style.display = 'none';
-  const movieName = e.target.parentNode.children[1].children[0].innerHTML;
+  const movieName = e.target.parentNode.parentNode.children[1].children[0].innerHTML;
   getApi(movieName);
 };
 
