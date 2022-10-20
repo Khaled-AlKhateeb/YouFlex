@@ -1,13 +1,14 @@
 import addLikes from './addLikes.js';
 import retrieveLikes from './retrieveLikes.js';
 import { display } from './display-popup.js';
+import moviesCounter from './moviesCounter.js';
 
 const main = document.querySelector('.main');
 const navNumbers = document.querySelector('.numbers');
 
 const displayShows = (shows) => {
   if (shows) {
-    for (let i = 0; i <= 5; i += 1) {
+    for (let i = 1; i <= 10; i += 1) {
       navNumbers.innerHTML = `Movies (${i})`;
 
       const movieDetails = document.createElement('div');
@@ -72,6 +73,7 @@ const displayShows = (shows) => {
       });
     }
   }
+  moviesCounter();
 };
 
 const fetchShows = async () => {
