@@ -35,7 +35,7 @@ html {
 }
 
 .movie-title {
- font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .details {
@@ -43,10 +43,6 @@ html {
   justify-content: center;
   grid-template-columns: 200% 200%;
   text-align: center;
-}
-
-.comments-display {
-
 }
 
 .comments-list {
