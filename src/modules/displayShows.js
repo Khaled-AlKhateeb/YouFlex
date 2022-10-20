@@ -3,29 +3,30 @@ import retrieveLikes from './retrieveLikes.js';
 import { display } from './display-popup.js';
 import moviesCounter from './moviesCounter.js';
 
-const main = document.querySelector('.main');
+const mainSector = document.querySelector('.main-sector');
 const navNumbers = document.querySelector('.numbers');
 
 const displayShows = (shows) => {
   if (shows) {
-    for (let i = 1; i <= 10; i += 1) {
-      navNumbers.innerHTML = `Movies (${i})`;
+    navNumbers.innerHTML = `(${shows.length})`;
 
+    shows.forEach((show) => {
       const movieDetails = document.createElement('div');
-      movieDetails.classList.add('movie-details');
-      main.appendChild(movieDetails);
+      movieDetails.className = 'movie-details flex';
+      mainSector.appendChild(movieDetails);
 
       const movieImage = document.createElement('img');
+      movieImage.className = 'movie-img';
       movieDetails.appendChild(movieImage);
-      movieImage.setAttribute('src', shows[i].image.medium);
+      movieImage.setAttribute('src', show.image.medium);
 
       const nameLikes = document.createElement('div');
-      nameLikes.classList.add('details');
+      nameLikes.className = 'mov-details flex';
       movieDetails.appendChild(nameLikes);
 
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
-      const name = document.createTextNode(shows[i].name);
+      const name = document.createTextNode(show.name);
       nameLikes.appendChild(movieName);
       movieName.appendChild(name);
 
@@ -35,43 +36,42 @@ const displayShows = (shows) => {
       nameLikes.appendChild(likeBtn);
 
       const likesDiv = document.createElement('div');
-      likesDiv.classList.add('likes-div');
-      nameLikes.appendChild(likesDiv);
+      likesDiv.className = 'likes-div flex';
+      movieDetails.appendChild(likesDiv);
 
       const numberLikes = document.createElement('p');
       numberLikes.classList.add('number-likes');
 
       retrieveLikes().then((likes) => {
         likes.forEach((like) => {
-          if (like.item_id === shows[i].id) {
+          if (like.item_id === show.id) {
             numberLikes.innerHTML = `${like.likes} Likes`;
           }
         });
       });
-      movieDetails.appendChild(numberLikes);
+      likesDiv.appendChild(numberLikes);
 
       const commentBtn = document.createElement('button');
       commentBtn.classList.add('comments-btn');
       const commentBtnTxt = document.createTextNode('Comment');
-      movieDetails.appendChild(commentBtn);
+      likesDiv.appendChild(commentBtn);
       commentBtn.appendChild(commentBtnTxt);
-
       commentBtn.addEventListener('click', (e) => {
         display(e);
       });
-
       likeBtn.addEventListener('click', () => {
-        numberLikes.innerHTML = '';
-        addLikes(shows[i].id);
+        addLikes(show.id);
+        numberLikes.innerHTML = '.. loading';
+        addLikes(show.id);
         setTimeout(retrieveLikes().then((likes) => {
           likes.forEach((like) => {
-            if (like.item_id === shows[i].id) {
+            if (like.item_id === show.id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
           });
         }), 1000);
       });
-    }
+    });
   }
   moviesCounter();
 };
