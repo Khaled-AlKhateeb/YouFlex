@@ -63,13 +63,13 @@ const displayShows = (shows) => {
       likeBtn.addEventListener('click', () => {
         numberLikes.innerHTML = '';
         addLikes(shows[i].id);
-        retrieveLikes().then((likes) => {
+        setTimeout(retrieveLikes().then((likes) => {
           likes.forEach((like) => {
             if (like.item_id === shows[i].id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
           });
-        });
+        }), 1000);
       });
     }
   }
