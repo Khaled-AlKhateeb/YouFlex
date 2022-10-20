@@ -56,11 +56,9 @@ const displayShows = (shows) => {
       const commentBtnTxt = document.createTextNode('Comment');
       likesDiv.appendChild(commentBtn);
       commentBtn.appendChild(commentBtnTxt);
-      
       commentBtn.addEventListener('click', (e) => {
         display(e);
       });
-      
       likeBtn.addEventListener('click', () => {
         addLikes(show.id);
         numberLikes.innerHTML = '.. loading';
