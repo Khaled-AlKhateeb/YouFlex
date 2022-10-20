@@ -93,10 +93,6 @@ body {
 }
 
 .comments-btn {
-  /* padding: 10px;
-  font-size: 1em;
-  box-shadow: 1px 1px 1px 1px rgb(51, 51, 51);
-  border-radius: 5px; */
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -145,9 +141,6 @@ body {
   justify-content: center;
   grid-template-columns: 200% 200%;
   text-align: center;
-}
-
-.comments-display {
 }
 
 .comments-list {
