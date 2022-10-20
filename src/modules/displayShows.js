@@ -1,5 +1,7 @@
 import addLikes from './addLikes.js';
 import retrieveLikes from './retrieveLikes.js';
+import { display } from './display-popup.js';
+import moviesCounter from './moviesCounter.js';
 
 const mainSector = document.querySelector('.main-sector');
 const navNumbers = document.querySelector('.numbers');
@@ -54,21 +56,26 @@ const displayShows = (shows) => {
       const commentBtnTxt = document.createTextNode('Comment');
       likesDiv.appendChild(commentBtn);
       commentBtn.appendChild(commentBtnTxt);
-
+      
+      commentBtn.addEventListener('click', (e) => {
+        display(e);
+      });
+      
       likeBtn.addEventListener('click', () => {
         addLikes(show.id);
         numberLikes.innerHTML = '.. loading';
         addLikes(show.id);
-        retrieveLikes().then((likes) => {
+        setTimeout(retrieveLikes().then((likes) => {
           likes.forEach((like) => {
             if (like.item_id === show.id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
           });
-        });
+        }), 1000);
       });
     });
   }
+  moviesCounter();
 };
 
 const fetchShows = async () => {

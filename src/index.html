@@ -21,35 +21,21 @@
     </header>
     <main class="main">
       <section class="main-sector flex"></section>
-      <div class="paginate">
-        <ul>
-          <li><button id="prev-btn">Previous</button></li>
-          <li><button id="next-btn">Next</button></li>
-        </ul>
-      </div>
     </main>
     <section id="commentPopup" class="comment-popup">
-      <img class="thumbnail" src="assets/youflex.png" alt="">
-      <button class="close-btn">
+      <img id="thumbnail" class="thumbnail" src="assets/youflex.png" alt="">
+      <button id="closeBtn" class="close-btn" type="button">
         <img class="close-icon" src="assets/thick-cross-mark.png" alt="close icon">
       </button>
-      <h1 class="movie-title">Space 3</h1>
-      <div class="details">
-        <span>Fuel: titanium</span>
-        <span>Length: 100,000</span>
-        <span>Weight: 400</span>
-        <span>Power: 100,000,000</span>
-      </div>
-      <h2 class="comments-display">Comments (2)</h2>
-      <ul class="comments-list">
-        <li class="comments-item">03/11/2021 Alex: I'd love to buy it!</li>
-        <li class="comments-item">03/12/2021 Mia: I love</li>
-      </ul>
+      <h1 id="movieTitle" class="movie-title">Space 3</h1>
+      <span id="details" class="details"></span>
+      <h2 id="commentsDisplay" class="comments-display">Comments (2)</h2>
+      <ul id="commentsList" class="comments-list"></ul>
       <form class="comments-form" action="">
         <h2>Add a comment</h2>
-        <input type="text" placeholder="Your name">
-        <textarea name="" id="" cols="30" rows="10" placeholder="Your insights"></textarea>
-        <button>Comment</button>
+        <input id="nameInput" class="name-input" type="text" placeholder="Your name">
+        <textarea id="commentInput" class="comment-input" cols="30" rows="10" placeholder="Your insights"></textarea>
+        <button id="formCommentBtn" class="form-comment-btn" type="submit">Comment</button>
       </form>
     <footer></footer>
   </body>
