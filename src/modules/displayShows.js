@@ -4,13 +4,11 @@ import { display } from './display-popup.js';
 import moviesCounter from './moviesCounter.js';
 
 const mainSector = document.querySelector('.main-sector');
-const navNumbers = document.querySelector('.numbers');
 
 const displayShows = (shows) => {
   if (shows) {
-    navNumbers.innerHTML = `(${shows.length})`;
 
-    shows.forEach((show) => {
+    for (let i = 0; i < 20; i += 1) {
       const movieDetails = document.createElement('div');
       movieDetails.className = 'movie-details flex';
       mainSector.appendChild(movieDetails);
@@ -18,7 +16,7 @@ const displayShows = (shows) => {
       const movieImage = document.createElement('img');
       movieImage.className = 'movie-img';
       movieDetails.appendChild(movieImage);
-      movieImage.setAttribute('src', show.image.medium);
+      movieImage.setAttribute('src', shows[i].image.medium);
 
       const nameLikes = document.createElement('div');
       nameLikes.className = 'mov-details flex';
@@ -26,7 +24,7 @@ const displayShows = (shows) => {
 
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
-      const name = document.createTextNode(show.name);
+      const name = document.createTextNode(shows[i].name);
       nameLikes.appendChild(movieName);
       movieName.appendChild(name);
 
@@ -44,7 +42,7 @@ const displayShows = (shows) => {
 
       retrieveLikes().then((likes) => {
         likes.forEach((like) => {
-          if (like.item_id === show.id) {
+          if (like.item_id === shows[i].id) {
             numberLikes.innerHTML = `${like.likes} Likes`;
           }
         });
@@ -60,18 +58,16 @@ const displayShows = (shows) => {
         display(e);
       });
       likeBtn.addEventListener('click', () => {
-        addLikes(show.id);
-        numberLikes.innerHTML = '.. loading';
-        addLikes(show.id);
+        addLikes(shows[i].id);
         setTimeout(retrieveLikes().then((likes) => {
           likes.forEach((like) => {
-            if (like.item_id === show.id) {
+            if (like.item_id === shows[i].id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
           });
         }), 1000);
       });
-    });
+    }
   }
   moviesCounter();
 };
