@@ -11,7 +11,7 @@ const nameInput = document.getElementById('nameInput');
 const commentInput = document.getElementById('commentInput');
 const commentsList = document.getElementById('commentsList');
 const commentsDisplay = document.getElementById('commentsDisplay');
-let aquiredData = [];
+export let aquiredData = [];
 let commentsData = [];
 
 const getCommentsApi = async (id) => {
@@ -42,14 +42,14 @@ export const commentsContent = (comment) => {
       commentItem.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
       commentsList.appendChild(commentItem);
     });
-    commentsCounter();
+    commentsCounter(commentsList);
   }
 };
 
 export const display = (e) => {
   commentPopup.style.display = 'flex';
   main.style.display = 'none';
-  const movieName = e.target.parentNode.parentNode.children[1].children[0].innerHTML;
+  const movieName = e.target.parentNode.parentNode.children[1].innerHTML;
   getApi(movieName);
 };
 

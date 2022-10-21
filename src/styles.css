@@ -1,54 +1,97 @@
+:root {
+  --font-color: #c5c4c4;
+  --primary-color: #e64d52;
+}
+
 html {
   font-family: "Nunito", sans-serif;
   box-sizing: border-box;
+  color: var(--font-color);
   margin: 0;
   padding: 0;
-}
-
-body {
   background: #303030;
 }
 
-.flex {
+body {
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
 }
 
 .header {
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  height: 1rem;
   padding: 1em;
 }
 
+.logo-img {
+  height: 2.5rem;
+}
+
 .nav-list {
+  display: flex;
   list-style: none;
-}
-
-.nav-list > li {
-  padding: 20px;
-}
-
-.nav-list > li > a {
-  text-decoration: none;
-  font-size: 2em;
+  gap: 2rem;
+  margin-right: 2rem;
   font-weight: 600;
-  color: #fff;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
 }
 
-.nav-list > li > a:hover {
-  color: rgba(255, 255, 255, 0.7);
+.nav-item:hover .nav-link {
+  color: var(--primary-color);
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:visited {
+  color: var(--font-color);
 }
 
 .main-sector {
-  flex-wrap: wrap;
+  display: flex;
   justify-content: center;
   margin: auto;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.main-sector::-webkit-scrollbar {
+  display: none;
+}
+
+.previous-btn,
+.next-btn {
+  position: absolute;
+  top: 30%;
+  padding: 0 1rem;
+  color: var(--font-color);
+  font-size: 4rem;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.previous-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
 }
 
 .movie-details {
-  width: 25%;
+  height: 23rem;
+  width: 12rem;
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: rgb(80, 80, 80);
+  padding: 0.3rem;
+  border-radius: 0.3rem;
 }
 
 .mov-details {
@@ -62,8 +105,10 @@ body {
 }
 
 .movie-name {
-  font-size: 1em;
-  color: #fff;
+  flex: 2;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 0.5rem 0;
 }
 
 .like-btn {
@@ -79,32 +124,29 @@ body {
 }
 
 .likes-div {
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1em;
-  gap: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
 }
 
 .number-likes {
   text-align: right;
   margin: 0 0;
-  color: #fff;
 }
 
 .comments-btn {
+  flex: 2;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #fff;
   font-size: 1em;
-  padding: 10px;
+  color: var(--font-color);
+  text-align: left;
+  padding: 0;
 }
 
 .comments-btn:hover {
-  background: rgb(255, 205, 205);
-  color: #303030;
-  border-radius: 5px;
+  color: var(--primary-color);
 }
 
 .comment-popup {
@@ -114,6 +156,8 @@ body {
   border: 2px solid black;
   position: relative;
   padding: 1rem;
+  margin-bottom: 2rem;
+  height: 71vh;
 }
 
 .close-btn {
@@ -127,18 +171,49 @@ body {
   width: 2.5rem;
 }
 
+.division {
+  display: flex;
+  gap: 5rem;
+}
+
 .thumbnail {
-  width: 55vw;
+  height: 70vh;
   margin: auto;
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-title {
   font-size: 2.5rem;
+  margin-bottom: 0;
 }
 
 .details {
   width: 50vw;
-  text-align: center;
+  text-align: left;
+  max-height: 8rem;
+  overflow-y: scroll;
+}
+
+.details::-webkit-scrollbar {
+  display: none;
+}
+
+.comments-div {
+  display: flex;
+  gap: 3rem;
+}
+
+.show-comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-display {
+  font-size: 1.1rem;
 }
 
 .comments-list {
@@ -146,11 +221,19 @@ body {
   flex-direction: column;
   list-style: none;
   font-size: 1.1rem;
-  font-weight: 600;
+  padding: 0;
+  margin-top: 0;
+  max-height: 16rem;
+  overflow-y: scroll;
+}
+
+.comments-list::-webkit-scrollbar {
+  display: none;
 }
 
 .comments-item {
-  margin: 1rem 0;
+  font-size: 1rem;
+  margin: 0.2rem 0;
 }
 
 .comments-form {
@@ -162,15 +245,55 @@ body {
 .name-input,
 .comment-input {
   font-size: 1.1rem;
-  border: 3px solid black;
-  border-radius: 0.3rem;
+  border: none;
+  border-radius: 0.5rem;
   padding: 0.5rem;
+  font-family: "Nunito", sans-serif;
+  background-color: lightgray;
+  outline: none;
+}
+
+.comment-input {
+  height: 8rem;
+}
+
+.addacomment {
+  margin-bottom: 0;
 }
 
 .form-comment-btn {
-  border: 3px solid black;
+  border: 3px solid var(--font-color);
   background-color: transparent;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 700;
   padding: 0.5rem;
+  color: var(--font-color);
+  border-radius: 0.5rem;
+}
+
+.form-comment-btn:hover {
+  color: var(--primary-color);
+  border: 3px solid var(--primary-color);
+}
+
+.footer {
+  display: flex;
+  justify-self: flex-end;
+  flex-direction: column;
+  bottom: 0;
+  margin-top: auto;
+}
+
+.upper-footer {
+  background-color: var(--primary-color);
+  color: #303030;
+  font-weight: 800;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.lower-footer {
+  height: 1rem;
 }
