@@ -7,7 +7,6 @@ const mainSector = document.querySelector('.main-sector');
 
 const displayShows = (shows) => {
   if (shows) {
-
     for (let i = 0; i < 20; i += 1) {
       const movieDetails = document.createElement('div');
       movieDetails.className = 'movie-details flex';
@@ -65,7 +64,6 @@ const displayShows = (shows) => {
             if (like.item_id === shows[i].id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
-
           });
         }), 1000);
       });
