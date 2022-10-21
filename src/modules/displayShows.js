@@ -24,7 +24,7 @@ const displayShows = (shows) => {
       movieName.appendChild(name);
 
       const likeBtn = document.createElement('img');
-      likeBtn.setAttribute('src', '../assets/heart.png');
+      likeBtn.setAttribute('src', './assets/heart.png');
       likeBtn.classList.add('like-btn');
 
       const likesDiv = document.createElement('div');
