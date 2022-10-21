@@ -19,7 +19,7 @@ const displayShows = (shows) => {
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
       movieDetails.appendChild(movieName);
-      
+
       const name = document.createTextNode(shows[i].name);
       movieName.appendChild(name);
 

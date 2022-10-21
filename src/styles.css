@@ -40,16 +40,16 @@ body {
   font-size: 1.2rem;
 }
 
-.nav-item:hover .nav-link {
-  color: var(--primary-color);
-}
-
 .nav-link {
   text-decoration: none;
 }
 
 .nav-link:visited {
   color: var(--font-color);
+}
+
+.nav-item:hover .nav-link {
+  color: var(--primary-color);
 }
 
 .main-sector {
@@ -77,11 +77,6 @@ body {
   outline: none;
 }
 
-.previous-btn:hover,
-.next-btn:hover {
-  color: var(--primary-color);
-}
-
 .previous-btn {
   left: 0;
 }
@@ -90,8 +85,16 @@ body {
   right: 0;
 }
 
+.previous-btn:hover,
+.next-btn:hover {
+  color: var(--primary-color);
+}
+
 .fa-solid {
-  text-shadow: -1px 2px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+  text-shadow:
+    -1px 2px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
     -1px -1px 0 #000;
 }
 

@@ -11,7 +11,7 @@ const nameInput = document.getElementById('nameInput');
 const commentInput = document.getElementById('commentInput');
 const commentsList = document.getElementById('commentsList');
 const commentsDisplay = document.getElementById('commentsDisplay');
-export let aquiredData = [];
+let aquiredData = [];
 let commentsData = [];
 
 const getCommentsApi = async (id) => {

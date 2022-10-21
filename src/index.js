@@ -15,7 +15,7 @@ const nextSlide = () => {
 
 const prevSlide = () => {
   mainSector.scrollLeft += 700;
-}
+};
 
 prevBtn.addEventListener('click', nextSlide);
 nextBtn.addEventListener('click', prevSlide);
