@@ -9,31 +9,26 @@ const displayShows = (shows) => {
   if (shows) {
     for (let i = 0; i < 20; i += 1) {
       const movieDetails = document.createElement('div');
-      movieDetails.className = 'movie-details flex';
+      movieDetails.className = 'movie-details';
       mainSector.appendChild(movieDetails);
 
       const movieImage = document.createElement('img');
       movieImage.className = 'movie-img';
       movieDetails.appendChild(movieImage);
       movieImage.setAttribute('src', shows[i].image.medium);
-
-      const nameLikes = document.createElement('div');
-      nameLikes.className = 'mov-details flex';
-      movieDetails.appendChild(nameLikes);
-
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
+      movieDetails.appendChild(movieName);
+
       const name = document.createTextNode(shows[i].name);
-      nameLikes.appendChild(movieName);
       movieName.appendChild(name);
 
       const likeBtn = document.createElement('img');
       likeBtn.setAttribute('src', '../assets/heart.png');
       likeBtn.classList.add('like-btn');
-      nameLikes.appendChild(likeBtn);
 
       const likesDiv = document.createElement('div');
-      likesDiv.className = 'likes-div flex';
+      likesDiv.className = 'likes-div';
       movieDetails.appendChild(likesDiv);
 
       const numberLikes = document.createElement('p');
@@ -47,13 +42,14 @@ const displayShows = (shows) => {
           }
         });
       });
-      likesDiv.appendChild(numberLikes);
 
       const commentBtn = document.createElement('button');
       commentBtn.classList.add('comments-btn');
       const commentBtnTxt = document.createTextNode('Comment');
       likesDiv.appendChild(commentBtn);
       commentBtn.appendChild(commentBtnTxt);
+      likesDiv.appendChild(likeBtn);
+      likesDiv.appendChild(numberLikes);
       commentBtn.addEventListener('click', (e) => {
         display(e);
       });

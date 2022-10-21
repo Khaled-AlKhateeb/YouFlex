@@ -1,7 +1,6 @@
 {
   "name": "you-flex",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/Khaled-AlKhateeb/Kanban-Board#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
     "babel-eslint": "^10.1.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
@@ -43,9 +43,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.19.6"
+    "jest-environment-jsdom": "^29.2.1"
   },
   "jest": {
     "testEnvironment": "jsdom"
-  }
+  },
+  "description": ""
 }
