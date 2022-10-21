@@ -39,6 +39,7 @@ const displayShows = (shows) => {
 
       const numberLikes = document.createElement('p');
       numberLikes.classList.add('number-likes');
+      numberLikes.innerHTML = '0 Likes';
 
       retrieveLikes().then((likes) => {
         likes.forEach((like) => {
@@ -64,6 +65,7 @@ const displayShows = (shows) => {
             if (like.item_id === shows[i].id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
+
           });
         }), 1000);
       });
