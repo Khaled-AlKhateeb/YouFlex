@@ -4,13 +4,10 @@ import { display } from './display-popup.js';
 import moviesCounter from './moviesCounter.js';
 
 const mainSector = document.querySelector('.main-sector');
-const navNumbers = document.querySelector('.numbers');
 
 const displayShows = (shows) => {
   if (shows) {
-    navNumbers.innerHTML = `(${shows.length})`;
-
-    shows.forEach((show) => {
+    for (let i = 0; i < 20; i += 1) {
       const movieDetails = document.createElement('div');
       movieDetails.className = 'movie-details';
       mainSector.appendChild(movieDetails);
@@ -18,12 +15,12 @@ const displayShows = (shows) => {
       const movieImage = document.createElement('img');
       movieImage.className = 'movie-img';
       movieDetails.appendChild(movieImage);
-      movieImage.setAttribute('src', show.image.medium);
-
+      movieImage.setAttribute('src', shows[i].image.medium);
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
-      const name = document.createTextNode(show.name);
       movieDetails.appendChild(movieName);
+      
+      const name = document.createTextNode(shows[i].name);
       movieName.appendChild(name);
 
       const likeBtn = document.createElement('img');
@@ -36,15 +33,16 @@ const displayShows = (shows) => {
 
       const numberLikes = document.createElement('p');
       numberLikes.classList.add('number-likes');
+      numberLikes.innerHTML = '0 Likes';
 
       retrieveLikes().then((likes) => {
         likes.forEach((like) => {
-          if (like.item_id === show.id) {
+          if (like.item_id === shows[i].id) {
             numberLikes.innerHTML = `${like.likes} Likes`;
           }
         });
       });
-      
+
       const commentBtn = document.createElement('button');
       commentBtn.classList.add('comments-btn');
       const commentBtnTxt = document.createTextNode('Comment');
@@ -56,18 +54,16 @@ const displayShows = (shows) => {
         display(e);
       });
       likeBtn.addEventListener('click', () => {
-        addLikes(show.id);
-        numberLikes.innerHTML = '.. loading';
-        addLikes(show.id);
+        addLikes(shows[i].id);
         setTimeout(retrieveLikes().then((likes) => {
           likes.forEach((like) => {
-            if (like.item_id === show.id) {
+            if (like.item_id === shows[i].id) {
               numberLikes.innerHTML = `${like.likes} Likes`;
             }
           });
         }), 1000);
       });
-    });
+    }
   }
   moviesCounter();
 };
