@@ -232,6 +232,7 @@ body {
 
 .comments-display {
   font-size: 1.1rem;
+  color: var(--font-color);
 }
 
 .comments-list {

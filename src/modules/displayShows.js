@@ -2,14 +2,17 @@ import addLikes from './addLikes.js';
 import retrieveLikes from './retrieveLikes.js';
 import { display } from './display-popup.js';
 import moviesCounter from './moviesCounter.js';
+import getCommentCounterApi from './comments-counter.js';
 
 const mainSector = document.querySelector('.main-sector');
+const commentsIdArr = [];
 
 const displayShows = (shows) => {
   if (shows) {
     for (let i = 0; i < 20; i += 1) {
       const movieDetails = document.createElement('div');
       movieDetails.className = 'movie-details';
+      movieDetails.setAttribute('id', shows[i].id);
       mainSector.appendChild(movieDetails);
 
       const movieImage = document.createElement('img');
@@ -42,12 +45,11 @@ const displayShows = (shows) => {
           }
         });
       });
+      commentsIdArr.push(shows[i].id);
 
       const commentBtn = document.createElement('button');
       commentBtn.classList.add('comments-btn');
-      const commentBtnTxt = document.createTextNode('Comment');
       likesDiv.appendChild(commentBtn);
-      commentBtn.appendChild(commentBtnTxt);
       likesDiv.appendChild(likeBtn);
       likesDiv.appendChild(numberLikes);
       commentBtn.addEventListener('click', (e) => {
@@ -66,6 +68,7 @@ const displayShows = (shows) => {
     }
   }
   moviesCounter();
+  getCommentCounterApi(commentsIdArr);
 };
 
 const fetchShows = async () => {
