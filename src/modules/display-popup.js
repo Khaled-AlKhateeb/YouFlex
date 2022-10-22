@@ -1,3 +1,5 @@
+import getCommentCounterApi from './comments-counter.js';
+
 const closeBtn = document.getElementById('closeBtn');
 const commentPopup = document.getElementById('commentPopup');
 const main = document.querySelector('.main');
@@ -19,6 +21,7 @@ export const getCommentsApi = async (id) => {
 };
 
 export const popupContent = (movieData) => {
+  formCommentBtn.setAttribute('data', movieData.id);
   thumbnail.src = movieData.image.original;
   movieTitle.innerHTML = movieData.name;
   details.innerHTML = movieData.summary;
@@ -66,17 +69,23 @@ const sendData = async (data) => {
     },
     body: JSON.stringify(data),
   };
-
   await fetch(postUrl, parameters);
 };
 
-formCommentBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  sendData({
+const submitBtn = async () => {
+  await sendData({
     item_id: aquiredData.id,
     username: nameInput.value,
     comment: commentInput.value,
   });
+  commentsList.innerHTML = '';
   nameInput.value = '';
   commentInput.value = '';
+};
+
+formCommentBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await submitBtn();
+  await getCommentsApi(e.target.getAttribute('data'));
+  await getCommentCounterApi([e.target.getAttribute('data')]);
 });

@@ -9,4 +9,5 @@ const addLikes = async (id) => {
   };
   await fetch(addLikesUrl, parameters);
 };
+
 export default addLikes;

@@ -4,5 +4,5 @@ const retrieveLikes = async () => {
 
   return response.json();
 };
-retrieveLikes();
+
 export default retrieveLikes;
