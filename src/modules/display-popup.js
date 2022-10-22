@@ -1,4 +1,4 @@
-import commentsCounter from './comments-counter.js';
+import getCommentCounterApi from './comments-counter.js';
 
 const closeBtn = document.getElementById('closeBtn');
 const commentPopup = document.getElementById('commentPopup');
@@ -12,20 +12,21 @@ const commentInput = document.getElementById('commentInput');
 const commentsList = document.getElementById('commentsList');
 const commentsDisplay = document.getElementById('commentsDisplay');
 let aquiredData = [];
-let commentsData = [];
 
-const getCommentsApi = async (id) => {
+export const getCommentsApi = async (id) => {
   const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CleVZYCORgbN3niQTjHc/comments?item_id=${id}`);
-  commentsData = await response.json();
+  const commentsData = await response.json();
   // eslint-disable-next-line no-use-before-define
   commentsContent(commentsData);
 };
 
 export const popupContent = (movieData) => {
+  formCommentBtn.setAttribute('data', movieData.id);
   thumbnail.src = movieData.image.original;
   movieTitle.innerHTML = movieData.name;
   details.innerHTML = movieData.summary;
-  getCommentsApi(aquiredData.id);
+  commentsDisplay.innerHTML = 'Comments';
+  getCommentsApi(movieData.id);
 };
 
 const getApi = async (movie) => {
@@ -35,14 +36,13 @@ const getApi = async (movie) => {
 };
 
 export const commentsContent = (comment) => {
-  if (comment) {
-    comment.forEach((element) => {
+  if (!comment.error) {
+    for (let i = 0; i < comment.length; i += 1) {
       const commentItem = document.createElement('i');
       commentItem.classList.add('comments-item');
-      commentItem.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
+      commentItem.innerHTML = `${comment[i].creation_date} ${comment[i].username}: ${comment[i].comment}`;
       commentsList.appendChild(commentItem);
-    });
-    commentsCounter(commentsList);
+    }
   }
 };
 
@@ -69,17 +69,23 @@ const sendData = async (data) => {
     },
     body: JSON.stringify(data),
   };
-
   await fetch(postUrl, parameters);
 };
 
-formCommentBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  sendData({
+const submitBtn = async () => {
+  await sendData({
     item_id: aquiredData.id,
     username: nameInput.value,
     comment: commentInput.value,
   });
+  commentsList.innerHTML = '';
   nameInput.value = '';
   commentInput.value = '';
+};
+
+formCommentBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await submitBtn();
+  await getCommentsApi(e.target.getAttribute('data'));
+  await getCommentCounterApi([e.target.getAttribute('data')]);
 });

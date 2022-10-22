@@ -19,7 +19,6 @@ It is accessible to all kinds of readers because it's designed with the highly r
 
 For Live Demo Link, click [here](https://khaled-alkhateeb.github.io/YouFlex/)
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
