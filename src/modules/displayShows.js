@@ -19,6 +19,7 @@ const displayShows = (shows) => {
       movieImage.className = 'movie-img';
       movieDetails.appendChild(movieImage);
       movieImage.setAttribute('src', shows[i].image.medium);
+      
       const movieName = document.createElement('p');
       movieName.classList.add('movie-name');
       movieDetails.appendChild(movieName);
