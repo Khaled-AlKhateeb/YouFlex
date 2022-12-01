@@ -58,8 +58,6 @@ const displayShows = (shows) => {
       likeBtn.addEventListener('click', async () => {
         const showId = shows[i].id;
         await addLikes(showId);
-        // const x = await retrieveLikes();
-        // console.log(x);
         await retrieveLikes().then((likes) => {
           likes.forEach((like) => {
             if (like.item_id === shows[i].id) {
