@@ -3,6 +3,8 @@
 A capstone JavaScript application that utilises 2 APIs to display movies and enables users to like and comment on their favourate movies.
 The application consists of the Homepage that contains the list of movies and a popup window that displays details of a specific movie, it's likes and comments.
 
+(Forked Repo - Original [Repository](https://github.com/Khaled-AlKhateeb/YouFlex))
+
 - The movies are fetched from a [TV Maze](https://www.tvmaze.com/api) API.
 - App users are able to like and comment on their favourate movies through the [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270)
 
@@ -23,41 +25,45 @@ For Live Demo Link, click [here](https://khaled-alkhateeb.github.io/YouFlex/)
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites 
-  - Local Machine, Git, Text Editor (VS Code preferably)
+### Prerequisites
 
-### Setup 
-  - Checkout the project repository here [Link](https://github.com/Khaled-AlKhateeb/YouFlex)
+- Local Machine, Git, Text Editor (VS Code preferably)
 
-### Install 
-  - Use can use the repository HTTPS or SSH Urls to clone the project on your local machine or download the ZIP folder and extract its contents. 
+### Setup
 
-### Usage 
-  - Run the index.html file in the root directory of the project using any browser.
+- Checkout the project repository here [Link](https://github.com/Khaled-AlKhateeb/YouFlex)
 
-### Run tests 
-  - Use Chrome dev tools
-  - Ensure to checkout any linter errors
-  - Use npm test to run defined test
+### Install
 
-### Deployment 
-  - Use Github pages for free and secure deployment.
+- Use can use the repository HTTPS or SSH Urls to clone the project on your local machine or download the ZIP folder and extract its contents.
 
+### Usage
+
+- Run the index.html file in the root directory of the project using any browser.
+
+### Run tests
+
+- Use Chrome dev tools
+- Ensure to checkout any linter errors
+- Use npm test to run defined test
+
+### Deployment
+
+- Use Github pages for free and secure deployment.
 
 ## Authors
 
-👤 *Khaled AlKhateeb*
+👤 _Khaled AlKhateeb_
 
 - GitHub: [@Khaled-AlKhateeb](https://github.com/Khaled-AlKhateeb)
 - Twitter: [@](https://twitter.com/)
 - LinkedIn: [](https://linkedin.com/in/)
 
-👤 *Derrick Mulinde*
+👤 _Derrick Mulinde_
 
 - GitHub: [@inspecta](https://github.com/inspecta)
 - Twitter: [@djmulinde](https://twitter.com/djmulinde)
 - LinkedIn: [derrick-mulinde](https://linkedin.com/in/derrick-mulinde)
-
 
 ## 🤝 Contributing
 
